@@ -1,0 +1,40 @@
+---
+repos:
+
+# Automatically sort imports
+    - repo: https://github.com/PyCQA/isort.git
+      rev: 5.8.0
+      hooks:
+          - id: isort
+
+# Automatic source code formatting
+    - repo: https://github.com/psf/black
+      rev: 21.5b2
+      hooks:
+          - id: black
+            args: [--safe, --quiet]
+            files: \.pyi?$|SConscript$|^libtbx_config$
+            types: [file]
+
+    - repo: https://github.com/PyCQA/flake8
+      rev: 3.9.2
+      hooks:
+          - id: flake8
+
+    - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
+      rev: 0.1.0
+      hooks:
+          - id: yamlfmt
+
+# Syntax check and some basic flake8
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v4.0.1
+      hooks:
+          - id: check-yaml
+          - id: check-merge-conflict
+
+    - repo: git://github.com/doublify/pre-commit-clang-format
+      rev: 62302476d0da01515660132d76902359bed0f782
+      hooks:
+          - id: clang-format
+
